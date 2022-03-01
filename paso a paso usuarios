@@ -1,0 +1,95 @@
+1. importar en el modulo ppal, los formsModule
+2. borrar html ppal
+3. modificamos:
+	h1 {{titulo}} y en el componentes cambiamos la variable title por titulo
+4.
+5. form..
+6. input type"text" name ="nombre".. lo mismo con el apellido
+7. input type"subtmit" value"registrar
+8. bajo el formulario, interpolacion con un p
+	<p> {{mensaje}} y pasamos a crear la varaible
+mensaje = ""; debajo de titulo
+
+9. creamos una funcion registrar Usuario ahi abajo y pasamos
+this.mensaje ="usuario registrado".
+
+10 creamos la variable reistrado ="false
+
+11. volvemos la funcion y ponemos this.registrado =true
+
+12 volvemos al p{{mensaje y agregamos un Ngif
+<p *ngIf="registrado">{{mensaje
+aca dice que si registrado es igual a true me muestre el mensjae.
+y en el submit agreamos el click="registrarUsuario()
+
+13.para ver que se imprimio, en los input añadimos [(NgModel)]="nombre" //variable creada tambien, lo mismo con el apellido 
+
+14. en el p añadimos, con el nombre de {{nombre}} {{pellido}}
+
+==============///////================= agragamos el else, dentro del Ngif
+
+
+<p *ngIf="registrado; else sinRegistrar">{{mensaje}} con el nombre de {{nombre}} {{apellido}} </p>
+Si no se cumple, creamos una etiqueta, que abarca cosas que no se ejecutan a menos que:
+
+ng-template #sinRegistrar>
+
+<p> no hay registro // entonces nos aparecerá este mensaje 
+para lo anterior quitamos template y ponemos <p *ngIf="!registrado">No hay usuarios registrado</p> pero acá si se ve el mensaje pero hace lo mismo
+
+metemos todo esto dentro de la card modelo que ya tienes creada 
+
+
+========////////////////////============CONTINUACION CON Ngclass
+
+15. agregamos la variable cargo:string=""; // se le agrega el tipo de dato a los demas
+
+16. en el html agregamos otro input con el cargo
+agrega en el mensaje al {{cargo}}
+
+17 con el Ngstyle le daremos al cargo un color rojo
+asi usando el operador ternario al tiempo:
+
+<p *ngIf="registrado; else sinRegistro">{{mensaje}} con el nombre de {{nombre}} {{apellido}} Y tiene el cargo de <span [ngStyle]="{color: cargo == 'ingeniero'? 'red' : 'black'}"> {{cargo}} 
+
+            </span>
+        </p>
+
+si el cargo es ingeniero se pone rojo y si no se deja en negro
+
+18. creamos un .atributo en el css con estilos para la letra:
+  color: red; 
+  font-weight: bold; 
+  text-decoration: underline;
+  
+19. reemplazamos en el <p>
+
+
+<p *ngIf="registrado; else sinRegistro">{{mensaje}} con el nombre de {{nombre}} {{apellido}} Y tiene el cargo de <span [ngStyle]="{color: cargo == 'ingeniero'? 'red' : 'black'}"> {{cargo}} 
+
+            </span>
+        </p>
+        
+<p *ngIf="registrado; else sinRegistro">{{mensaje}} con el nombre de {{nombre}} {{apellido}} Y tiene el cargo de
+            <span [ngClass]="{atributosNgclass: cargo == 'ingeniero'}"> {{cargo}} 
+
+            </span>
+        </p>
+        
+        
+   
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
